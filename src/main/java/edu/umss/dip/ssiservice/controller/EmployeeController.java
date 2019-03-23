@@ -11,7 +11,9 @@ import edu.umss.dip.ssiservice.service.GenericService;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -34,12 +36,21 @@ public class EmployeeController extends GenericController<Employee, EmployeeDto>
         return super.getAll();
     }
 
+    @POST
+    public EmployeeDto save(@RequestBody EmployeeDto employee) {
+        return super.save(employee);
+    }
+    @DELETE
+    public void delete(@PathParam("id") @NotNull Long id) {
+         super.deleteElement(id);
+    }
+
     @Override
     protected GenericService getService() {
         return service;
     }
 
-    @Path("/{id}/image")
+@Path("/{id}/image")
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)

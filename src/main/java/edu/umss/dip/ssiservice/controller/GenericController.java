@@ -3,6 +3,7 @@ package edu.umss.dip.ssiservice.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.umss.dip.ssiservice.dto.DtoBase;
 import edu.umss.dip.ssiservice.exception.InternalErrorException;
+import edu.umss.dip.ssiservice.model.Employee;
 import edu.umss.dip.ssiservice.model.ModelBase;
 import edu.umss.dip.ssiservice.service.GenericService;
 import io.micrometer.core.instrument.util.IOUtils;
