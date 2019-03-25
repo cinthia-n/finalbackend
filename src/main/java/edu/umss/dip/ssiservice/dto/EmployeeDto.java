@@ -6,13 +6,49 @@ import org.apache.tomcat.util.codec.binary.Base64;
 import org.modelmapper.ModelMapper;
 
 public class EmployeeDto extends DtoBase<Employee> {
+    private String CI;
     private String firstName;
     private String lastName;
+    private String telephone;
+    private String address;
+    private String profession;
     private String image;
     private String jobPosition;
     private String jobCode;
     private Boolean featured;
     private String jobDescription;
+
+    public String getCI() {
+        return CI;
+    }
+
+    public void setCI(String CI) {
+        this.CI = CI;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getProfession() {
+        return profession;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
+    }
 
     public String getFirstName() {
         return firstName;

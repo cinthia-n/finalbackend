@@ -4,6 +4,9 @@
 
 package edu.umss.dip.ssiservice.model;
 
+import edu.umss.dip.ssiservice.dto.DtoBase;
+import org.modelmapper.ModelMapper;
+
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import java.util.Date;
@@ -14,8 +17,27 @@ public class Contract extends ModelBase {
     private Employee employee;
     @OneToOne(optional = false)
     private Position position;
+    private String titleContract;
+    private String descriptionContract;
     private Date initDate;
     private Date endDate;
+
+
+    public String getTitleContract() {
+        return titleContract;
+    }
+
+    public void setTitleContract(String titleContract) {
+        this.titleContract = titleContract;
+    }
+
+    public String getDescriptionContract() {
+        return descriptionContract;
+    }
+
+    public void setDescriptionContract(String descriptionContract) {
+        this.descriptionContract = descriptionContract;
+    }
 
     public Employee getEmployee() {
         return employee;
@@ -48,4 +70,8 @@ public class Contract extends ModelBase {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
+
+
+
+
 }
