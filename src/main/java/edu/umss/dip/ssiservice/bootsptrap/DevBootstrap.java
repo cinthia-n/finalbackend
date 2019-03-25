@@ -1,6 +1,4 @@
-/**
- * @author: Edson A. Terceros T.
- */
+
 
 package edu.umss.dip.ssiservice.bootsptrap;
 
@@ -20,16 +18,19 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
     private EmployeeRepository employeeRepository;
     private PositionRepository positionRepository;
     private ContractRepository contractRepository;
+    private AccidentRepository accidentRepository;
+
 
     public DevBootstrap(CategoryRepository categoryRepository, SubCategoryRepository subCategoryRepository,
             ItemRepository itemRepository, EmployeeRepository employeeRepository,
-            PositionRepository positionRepository, ContractRepository contractRepository) {
+            PositionRepository positionRepository, ContractRepository contractRepository, AccidentRepository accidentRepository) {
         this.categoryRepository = categoryRepository;
         this.subCategoryRepository = subCategoryRepository;
         this.itemRepository = itemRepository;
         this.employeeRepository = employeeRepository;
         this.positionRepository = positionRepository;
         this.contractRepository = contractRepository;
+        this.accidentRepository = accidentRepository;
     }
 
     @Override
@@ -82,6 +83,18 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         Employee john = new Employee();
         john.setFirstName("John");
         john.setLastName("Doe");
+        john.setCI("6578493 CBA");
+        john.setAddress("av blanco galindo klm 3");
+        john.setProfession("tecnico en construccion civil");
+        john.setTelephone("67893544");
+
+        Employee fernando = new Employee();
+        fernando.setFirstName("Fernando");
+        fernando.setLastName("Villarroel");
+        fernando.setCI("7865439 CBA");
+        fernando.setAddress("sacaba");
+        fernando.setProfession("Electricista");
+        fernando.setTelephone("78954321");
 
         // Position
         Position position = new Position();
@@ -93,9 +106,23 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         contract.setEmployee(john);
         contract.setInitDate(new Date(2010, 1, 1));
         contract.setPosition(position);
+        contract.setDescriptionContract("Encargado de supervisar las obras");
+
 
         john.getContracts().add(contract);
         employeeRepository.save(john);
         //contractRepository.save(contract);
+
+        Accident accident = new Accident();
+        accident.setDescription("fractura de clavicula por caida");
+        accident.setEmployee(john);
+        accident.setDate(new Date(2010, 1, 1));
+
+        Contract contract1 = new Contract();
+        contract1.setEmployee(john);
+        contract1.setPosition(position);
+        contract1.setTitleContract("OPERATIVE");
+        contract1.setDescriptionContract("Responsable de verificar las obras");
+
     }
 }
